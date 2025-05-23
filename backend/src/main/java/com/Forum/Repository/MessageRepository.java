@@ -1,10 +1,11 @@
 package com.Forum.Repository;
 
-import com.Forum.Model.UserAccount;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-@Repository
-public interface UserRepository extends JpaRepository<UserAccount, Long> {
+import com.Forum.Model.Message;
 
+@Repository
+public interface MessageRepository extends JpaRepository<Message, Long> {
+    
 }

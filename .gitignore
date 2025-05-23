@@ -35,4 +35,4 @@ backend/nbdist/
 backend/.nb-gradle/
 
 ### VS Code ###
-frontend/.vscode/
+.vscode

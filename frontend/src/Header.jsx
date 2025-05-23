@@ -16,10 +16,10 @@ function Header() {
                     <span className="font-bold">New Thread</span>
                     <Icon>add</Icon>
                 </Button>
-                <div className="login scale-150">
-                    <Badge  value={value} color={color}>
+                <div className="login scale-150 flex items-center">
+                    <Badge value={value} color={color}>
                         <IconButton>
-                            <Icon className=' text-on-secondary-container'>notifications</Icon>
+                            <Icon className='text-on-secondary-container'>notifications</Icon>
                         </IconButton>
                     </Badge>
                     <IconButton variant="filled-tonal">
