@@ -5,6 +5,7 @@ import java.util.List;
 
 import jakarta.persistence.*;
 import lombok.*;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 @Data
 @Table
@@ -18,18 +19,19 @@ public class ForumThread {
     @Getter private Long id;
 
     @Column(nullable = false)
-    @Getter @Setter private String thread_Name;
+    @Getter @Setter private String threadName;
 
     @ManyToOne
-    @JoinColumn(name = "thread_User")
-    UserAccount thread_User;
+    @JoinColumn(name = "threadUser")
+    UserAccount threadUser;
 
-    @OneToMany(mappedBy = "message_Thread")
-    List<Message> thread_Messages;
+    @OneToMany(mappedBy = "messageThread")
+    @JsonManagedReference
+    List<Message> threadMessages;
 
     // time of creation and time of update(messages added)
     @Column(nullable = false)
-    @Getter @Setter private Timestamp thread_CreationTime;
+    @Getter @Setter private Timestamp threadCreationTime;
     @Column(nullable = true)
-    @Getter @Setter private Timestamp thread_UpdateTime;
+    @Getter @Setter private Timestamp threadUpdateTime;
 }

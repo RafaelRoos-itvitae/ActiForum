@@ -3,6 +3,7 @@ package com.Forum.Model;
 import java.sql.Timestamp;
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -18,23 +19,25 @@ public class Message {
     @Getter private Long id;
 
     @Column(nullable = false, length = 8191)
-    @Getter @Setter private String message_Content;
+    @Getter @Setter private String messageContent;
 
     @ManyToOne
-    @JoinColumn(name = "message_Thread")
-    ForumThread message_Thread;
+    @JoinColumn(name = "messageThread")
+    @JsonBackReference
+    ForumThread messageThread;
 
     @ManyToOne
-    @JoinColumn(name = "message_User")
-    UserAccount message_User;
+    @JoinColumn(name = "messageUser")
+    UserAccount messageUser;
 
-    @OneToMany(mappedBy = "notification_Message")
-    List<Notification> message_Notifications;
+    @OneToMany(mappedBy = "notificationMessage")
+    @JsonBackReference
+    List<Notification> messageNotifications;
 
 
     // time of creation and time of last edit
-    @Column(nullable = false, name = "message_creationtime")
-    @Getter @Setter private Timestamp message_CreationTime;
-    @Column(nullable = true, name = "message_edittime")
-    @Getter @Setter private Timestamp message_EditTime;
+    @Column(nullable = false)
+    @Getter @Setter private Timestamp messageCreationTime;
+    @Column(nullable = true)
+    @Getter @Setter private Timestamp messageEditTime;
 }

@@ -15,18 +15,18 @@ public class Notification {
     @Getter private Long id;
     
     @ManyToOne
-    @JoinColumn(name = "notification_User")
-    UserAccount notification_User;
+    @JoinColumn
+    UserAccount notificationUser;
 
     @ManyToOne
-    @JoinColumn(name = "notification_Message")
-    Message notification_Message;
+    @JoinColumn
+    Message notificationMessage;
 
     @Column(nullable = false)
-    private boolean notification_IsUpdatedThread;
+    private boolean notificationIsUpdatedThread;
     @Column(nullable = false)
-    private boolean notification_IsMention;
+    private boolean notificationIsMention;
     @Column(nullable = false)
-    private boolean notification_IsRead;
+    private boolean notificationIsRead;
 
 }

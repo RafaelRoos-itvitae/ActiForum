@@ -2,6 +2,8 @@ package com.Forum.Model;
 
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -17,25 +19,28 @@ public class UserAccount {
     @Getter private Long id;
 
     @Column(nullable = false)
-    @Getter @Setter private String user_Name;
+    @Getter @Setter private String userName;
     @Column(nullable = false)
-    @Getter @Setter private String user_Email;
+    @Getter @Setter private String userEmail;
     @Column(nullable = false)
-    @Getter @Setter private String user_Password; // insecure
+    @Getter @Setter private String userPassword; // insecure
     @Column(nullable = false)
-    @Getter @Setter private boolean user_IsAdmin;
+    @Getter @Setter private boolean userIsAdmin;
     @Column(nullable = false)
-    @Getter @Setter private boolean user_IsBanned;
+    @Getter @Setter private boolean userIsBanned;
 
-    @OneToMany(mappedBy = "thread_User")
-    List<ForumThread> user_Threads;
-    @OneToMany(mappedBy = "message_User")
-    List<Message> user_Messages;
-    @OneToMany(mappedBy = "notification_User")
-    List<Notification> user_Notifications;
+    @OneToMany
+    @JsonBackReference
+    List<ForumThread> userThreads;
+    @OneToMany
+    @JsonBackReference
+    List<Message> userMessages;
+    @OneToMany
+    @JsonBackReference
+    List<Notification> userNotifications;
 
     @Column(nullable = false)
-    @Getter @Setter private String user_Bio;
+    @Getter @Setter private String userBio;
     @Column(nullable = false)
-    @Getter @Setter private String user_ImageURL;
+    @Getter @Setter private String userImageURL;
 }
