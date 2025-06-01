@@ -1,5 +1,7 @@
 package com.Forum.Model;
 
+import java.sql.Timestamp;
+
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -29,4 +31,8 @@ public class Notification {
     @Column(nullable = false)
     private boolean notificationIsRead;
 
+    @Column(nullable = false)
+    @Getter @Setter private Timestamp notificationCreationTime;
+    @Column(nullable = false)
+    @Getter @Setter private Timestamp notificationUpdateTime;
 }

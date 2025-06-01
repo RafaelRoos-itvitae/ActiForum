@@ -27,7 +27,7 @@ public class ForumThread {
 
     @OneToMany(mappedBy = "messageThread")
     @JsonManagedReference
-    List<Message> threadMessages;
+    @Getter @Setter List<Message> threadMessages;
 
     // time of creation and time of update(messages added)
     @Column(nullable = false)

@@ -16,7 +16,7 @@ public class ThreadController {
     @Autowired
     private ThreadRepository threadRepository;
 
-    @GetMapping(value = "/threads/")
+    @GetMapping(value = "/thread")
     public List<ForumThread> getForumThreads() {
         return threadRepository.findByOrderByThreadCreationTimeDesc();
     }
