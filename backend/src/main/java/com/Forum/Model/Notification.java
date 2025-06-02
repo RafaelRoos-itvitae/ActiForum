@@ -2,6 +2,8 @@ package com.Forum.Model;
 
 import java.sql.Timestamp;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -18,10 +20,12 @@ public class Notification {
     
     @ManyToOne
     @JoinColumn
+    @JsonBackReference(value = "userNotifications")
     UserAccount notificationUser;
 
     @ManyToOne
     @JoinColumn
+    @JsonBackReference(value = "messageNotifications")
     Message notificationMessage;
 
     @Column(nullable = false)

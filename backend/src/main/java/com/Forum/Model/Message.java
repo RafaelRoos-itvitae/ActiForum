@@ -4,6 +4,9 @@ import java.sql.Timestamp;
 import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -23,7 +26,7 @@ public class Message {
 
     @ManyToOne
     @JoinColumn(name = "messageThread")
-    @JsonBackReference
+    @JsonBackReference(value = "threadMessages")
     ForumThread messageThread;
 
     @ManyToOne
@@ -31,7 +34,8 @@ public class Message {
     UserAccount messageUser;
 
     @OneToMany(mappedBy = "notificationMessage")
-    @JsonBackReference
+    @JsonManagedReference(value = "messageNotifications")
+    @JsonIgnore
     List<Notification> messageNotifications;
 
 

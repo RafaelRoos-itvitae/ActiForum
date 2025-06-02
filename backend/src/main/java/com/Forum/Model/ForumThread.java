@@ -5,6 +5,9 @@ import java.util.List;
 
 import jakarta.persistence.*;
 import lombok.*;
+
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 @Data
@@ -22,11 +25,11 @@ public class ForumThread {
     @Getter @Setter private String threadName;
 
     @ManyToOne
-    @JoinColumn(name = "threadUser")
+    @JoinColumn(name = "threadUser", referencedColumnName = "id")
     UserAccount threadUser;
 
     @OneToMany(mappedBy = "messageThread")
-    @JsonManagedReference
+    @JsonManagedReference(value = "threadMessages")
     @Getter @Setter List<Message> threadMessages;
 
     // time of creation and time of update(messages added)

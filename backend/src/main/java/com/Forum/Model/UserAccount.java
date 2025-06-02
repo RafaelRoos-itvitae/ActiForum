@@ -3,7 +3,9 @@ package com.Forum.Model;
 import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import jakarta.persistence.*;
 import lombok.*;
@@ -31,14 +33,19 @@ public class UserAccount {
     @Column(nullable = false)
     @Getter @Setter private boolean userIsBanned;
 
-    @OneToMany
-    @JsonBackReference
+    @OneToMany(mappedBy = "threadUser")
+    @JsonManagedReference(value = "userThreads")
+    @JsonIgnore
     List<ForumThread> userThreads;
-    @OneToMany
-    @JsonBackReference
+
+    @OneToMany(mappedBy = "messageUser")
+    @JsonManagedReference(value = "userMessages")
+    @JsonIgnore
     List<Message> userMessages;
-    @OneToMany
-    @JsonBackReference
+
+    @OneToMany(mappedBy = "notificationUser")
+    @JsonManagedReference(value = "userNotifications")
+    @JsonIgnore
     List<Notification> userNotifications;
 
     @Column(nullable = false)
