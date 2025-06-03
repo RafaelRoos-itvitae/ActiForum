@@ -9,7 +9,7 @@ const FetchThreads = () => {
     useEffect(() => {fetch('http://localhost:8080/api/thread')
         .then((res) => { return res.json() }).then((data) => {console.log(data); setThreadNames(data);})
 
-    });
+    }, []);
 }
 
     function RecentThreads() {

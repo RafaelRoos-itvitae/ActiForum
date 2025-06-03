@@ -31,6 +31,7 @@ public class Message {
 
     @ManyToOne
     @JoinColumn(name = "messageUser")
+    @JsonBackReference(value = "userMessages")
     UserAccount messageUser;
 
     @OneToMany(mappedBy = "notificationMessage")

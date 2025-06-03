@@ -7,8 +7,8 @@ import jakarta.persistence.*;
 import lombok.*;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 @Data
 @Table
@@ -24,9 +24,13 @@ public class ForumThread {
     @Column(nullable = false)
     @Getter @Setter private String threadName;
 
+    @Column(nullable = true, length = 8191)
+    @Getter @Setter private String threadContent;
+
     @ManyToOne
-    @JoinColumn(name = "threadUser", referencedColumnName = "id")
-    UserAccount threadUser;
+    @JoinColumn(name = "threadUser")
+    @JsonBackReference(value = "userThreads")
+    @Getter @Setter UserAccount threadUser;
 
     @OneToMany(mappedBy = "messageThread")
     @JsonManagedReference(value = "threadMessages")
