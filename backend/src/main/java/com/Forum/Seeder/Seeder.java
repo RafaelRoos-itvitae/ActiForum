@@ -31,7 +31,7 @@ public class Seeder implements CommandLineRunner {
         userRepository.save(Rafaello);
         UserAccount Tom = UserAccount.builder().userName("Tom from Accounting").userEmail("tom@adaptio.corp").userPassword("3ff1c13ncy@tTh3W0rkpl@c3").userIsAdmin(false).userIsBanned(true).userBio("free speech absolutist").userImageURL("").build();
         userRepository.save(Tom);
-        ForumThread forumThread = ForumThread.builder().threadName("Testing").threadUser(Rafael).threadCreationTime(new java.sql.Timestamp(1748001600L * 1000)).threadUpdateTime(null).build();
+        ForumThread forumThread = ForumThread.builder().threadName("Testing").threadUser(Rafael).threadContent("Testing testing testing hello hello 📡").threadCreationTime(new java.sql.Timestamp(1748001600L * 1000)).threadUpdateTime(null).build();
         threadRepository.save(forumThread);
         Message message = Message.builder().messageContent("Lorem ipsum dolor sit amet. @Tom, do you copy?").messageThread(forumThread).messageUser(Rafael).messageCreationTime(new Timestamp(1748001600L * 1000)).messageEditTime(null).build();
         messageRepository.save(message);

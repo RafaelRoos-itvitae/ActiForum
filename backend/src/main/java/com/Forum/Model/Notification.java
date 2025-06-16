@@ -3,6 +3,7 @@ package com.Forum.Model;
 import java.sql.Timestamp;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import jakarta.persistence.*;
 import lombok.*;
@@ -21,19 +22,23 @@ public class Notification {
     @ManyToOne
     @JoinColumn
     @JsonBackReference(value = "userNotifications")
-    UserAccount notificationUser;
+    @Getter @Setter UserAccount notificationUser;
 
     @ManyToOne
     @JoinColumn
-    @JsonBackReference(value = "messageNotifications")
-    Message notificationMessage;
+    @JsonManagedReference(value = "messageNotifications")
+    @Getter @Setter Message notificationMessage;
+
+    // @ManyToOne
+    // @JoinColumn
+    // @JsonBackReference(value = "threadNotifications")
 
     @Column(nullable = false)
-    private boolean notificationIsUpdatedThread;
+    @Getter @Setter private boolean notificationIsUpdatedThread;
     @Column(nullable = false)
-    private boolean notificationIsMention;
+    @Getter @Setter private boolean notificationIsMention;
     @Column(nullable = false)
-    private boolean notificationIsRead;
+    @Getter @Setter private boolean notificationIsRead;
 
     @Column(nullable = false)
     @Getter @Setter private Timestamp notificationCreationTime;

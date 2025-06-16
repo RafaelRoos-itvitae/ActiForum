@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.Forum.Model.UserAccount;
 import com.Forum.Repository.UserRepository;
 
-@CrossOrigin
+@CrossOrigin(origins = "http://localhost:5173")
 @RestController
 @RequestMapping("/api")
 public class UserController {
@@ -27,7 +27,7 @@ public class UserController {
         return userRepository.getReferenceById(userId);
     }
 
-    @PostMapping(value = "/user/create")
+    @PostMapping(value = "/user/new")
     public UserAccount createUserAccount(@RequestBody UserAccount newUser) {
         return userRepository.save(newUser);
     }

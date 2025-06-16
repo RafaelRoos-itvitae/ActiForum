@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.Forum.Model.Notification;
 import com.Forum.Repository.NotificationRepository;
 
-@CrossOrigin
+@CrossOrigin(origins = "http://localhost:5173")
 @RestController
 @RequestMapping("/api")
 public class NotificationController {

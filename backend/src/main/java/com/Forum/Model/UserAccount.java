@@ -36,7 +36,7 @@ public class UserAccount {
     @Getter @Setter private boolean userIsBanned;
 
     @OneToMany(mappedBy = "threadUser")
-    @JsonManagedReference(value = "userThreads")
+    @JsonBackReference(value = "userThreads")
     @JsonIgnore
     List<ForumThread> userThreads;
 

@@ -26,18 +26,18 @@ public class Message {
 
     @ManyToOne
     @JoinColumn(name = "messageThread")
-    @JsonBackReference(value = "threadMessages")
-    ForumThread messageThread;
+    @JsonManagedReference(value = "threadMessages")
+    @Getter @Setter ForumThread messageThread;
 
     @ManyToOne
     @JoinColumn(name = "messageUser")
     @JsonBackReference(value = "userMessages")
-    UserAccount messageUser;
+    @Getter @Setter UserAccount messageUser;
 
     @OneToMany(mappedBy = "notificationMessage")
-    @JsonManagedReference(value = "messageNotifications")
+    @JsonBackReference(value = "messageNotifications")
     @JsonIgnore
-    List<Notification> messageNotifications;
+    @Getter @Setter List<Notification> messageNotifications;
 
 
     // time of creation and time of last edit
