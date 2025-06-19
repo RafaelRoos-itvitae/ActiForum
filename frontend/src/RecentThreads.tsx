@@ -44,7 +44,7 @@ function RecentThreads() {
     <>
     <div className="text-2xl text-center">Recent Threads</div>
         <Table style={{ height: '20px', maxWidth: '80px' }} paginator={{ pageSizes: [5, 10, 20] }} aria-label="Table of threads">
-            <TableHeader> {/* This is a cheap solution, but I didn't feel like trying to assign these manually */}
+            <TableHeader>
                 <Column key="threadUser"></Column>
                 <Column key="threadName"></Column>
                 <Column key="threadContent"></Column>
@@ -67,5 +67,4 @@ function RecentThreads() {
     </>
     );
 }
-
 export default RecentThreads;
