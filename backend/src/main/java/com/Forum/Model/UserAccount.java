@@ -35,19 +35,13 @@ public class UserAccount {
     @Column(nullable = false)
     @Getter @Setter private boolean userIsBanned;
 
-    @OneToMany(mappedBy = "threadUser")
-    @JsonBackReference(value = "userThreads")
-    @JsonIgnore
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "UserAccount")
     List<ForumThread> userThreads;
 
-    @OneToMany(mappedBy = "messageUser")
-    @JsonManagedReference(value = "userMessages")
-    @JsonIgnore
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "UserAccount")
     List<Message> userMessages;
 
-    @OneToMany(mappedBy = "notificationUser")
-    @JsonManagedReference(value = "userNotifications")
-    @JsonIgnore
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "UserAccount")
     List<Notification> userNotifications;
 
     @Column(nullable = false)
