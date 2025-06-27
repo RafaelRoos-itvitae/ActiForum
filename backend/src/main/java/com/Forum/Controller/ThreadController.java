@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.Forum.Model.ForumThread;
 import com.Forum.Repository.ThreadRepository;
 
-@CrossOrigin(origins = "http://localhost:5173")
+@CrossOrigin(origins = "http://localhost:1420")
 @RestController
 @RequestMapping("api")
 public class ThreadController {
