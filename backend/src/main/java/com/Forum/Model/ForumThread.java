@@ -28,12 +28,12 @@ public class ForumThread {
     @Getter @Setter private String threadContent;
 
     @ManyToOne
-    @JoinColumn(name = "user_id")
+    @JoinColumn(name = "threadUser")
+    @JsonManagedReference(value = "userThreads")
     @Getter @Setter UserAccount threadUser;
 
-
-    @OneToMany(mappedBy = "ForumThread")
-    @JoinColumn(name = "message_id")
+    @OneToMany(mappedBy = "messageThread")
+    @JsonBackReference(value = "threadMessages")
     @Getter @Setter List<Message> threadMessages;
 
     // time of creation and time of update(messages added)

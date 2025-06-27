@@ -25,15 +25,18 @@ public class Message {
     @Getter @Setter private String messageContent;
 
     @ManyToOne
-    @JoinColumn(name = "thread_id")
+    @JoinColumn(name = "messageThread")
+    @JsonManagedReference(value = "threadMessages")
     @Getter @Setter ForumThread messageThread;
 
     @ManyToOne
-    @JoinColumn(name = "user_id")
+    @JoinColumn(name = "messageUser")
+    @JsonBackReference(value = "userMessages")
     @Getter @Setter UserAccount messageUser;
 
-    // this needs to not be in message model
     @OneToMany(mappedBy = "notificationMessage")
+    @JsonBackReference(value = "messageNotifications")
+    @JsonIgnore
     @Getter @Setter List<Notification> messageNotifications;
 
 
