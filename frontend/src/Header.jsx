@@ -27,7 +27,7 @@ function Header() {
                             <Icon className='text-on-secondary-container'>notifications</Icon>
                         </IconButton>
                     </Badge>
-                    <Link to={"/user/${currentuser}"}>
+                    <Link to={"/user"}>
                         <IconButton variant="filled-tonal">
                             <Icon className='text-on-secondary-container'>person</Icon>
                         </IconButton>

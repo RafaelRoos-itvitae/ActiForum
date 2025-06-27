@@ -8,6 +8,7 @@ import Footer from './Footer.jsx'
 import RecentThreads from './RecentThreads.tsx'
 import Login from './Login.jsx'
 import ThreadCreation from './ThreadCreation.jsx'
+import Profile from './Profile.jsx'
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <StrictMode>
@@ -17,6 +18,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(
           <Route path="/" element={<RecentThreads />} />
           <Route path="/login" element={<Login />} />
           <Route path="/thread/create" element={<ThreadCreation />} />
+          <Route path="/user" element={<Profile />} />
         </Routes>
       <Footer />
     </BrowserRouter>
