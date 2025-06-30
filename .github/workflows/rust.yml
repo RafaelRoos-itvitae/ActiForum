@@ -17,7 +17,7 @@ jobs:
     steps:
     - uses: actions/checkout@v4
     - name: Install prerequisites
-      run: winget install Microsoft.VisualStudio.2022.BuildTools --override "--passive --wait --add Microsoft.VisualStudio.Workload.NativeDesktop --includeRecommended --includeOptional" && rustup default stable-msvc
+      run: rustup default stable-msvc
     - name: Install Node modules
       working-directory: frontend
       run: npm install --legacy-peer-deps
