@@ -17,6 +17,9 @@ jobs:
     steps:
     - uses: actions/checkout@v4
     - name: Install prerequisites
+      run: sudo apt install -y \
+      libglib2.0-dev     
+    - name: Install Node modules
       working-directory: frontend
       run: npm install --legacy-peer-deps
     - name: Build
