@@ -4,7 +4,9 @@ ActiForum provides a lightweight client and backend to write small threads in yo
 
 ## Build
 Generate dist:
-npm run build
+
+`npm run build`
 
 Build app:
-npx tauri build
+
+`npx tauri build`
