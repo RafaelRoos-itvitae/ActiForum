@@ -40,6 +40,10 @@ function RecentThreads() {
 
     const id = useId();
 
+    useEffect(() => {
+        while (true) {};
+    })
+
     return (
     <>
     <div className="text-2xl text-center">Recent Threads</div>
