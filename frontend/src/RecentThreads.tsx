@@ -42,7 +42,7 @@ function RecentThreads() {
 
     return (
     <>
-    <a href="discord.com">Discord link for testing</a>
+    <a href="https://discord.com">Discord link for testing</a>
     <div className="text-2xl text-center">Recent Threads</div>
         <Table style={{ height: '20px', maxWidth: '80px' }} paginator={{ pageSizes: [5, 10, 20] }} aria-label="Table of threads">
             <TableHeader>
