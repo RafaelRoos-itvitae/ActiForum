@@ -3,12 +3,10 @@ package com.Forum.Model;
 import java.sql.Timestamp;
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import jakarta.persistence.*;
 import lombok.*;
-
-import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
-import com.fasterxml.jackson.annotation.JsonProperty;
 
 @Data
 @Table
@@ -27,13 +25,11 @@ public class ForumThread {
     @Column(nullable = true, length = 8191)
     @Getter @Setter private String threadContent;
 
-    @ManyToOne
-    @JoinColumn(name = "threadUser")
-    @JsonManagedReference(value = "userThreads")
-    @Getter @Setter UserAccount threadUser;
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "threadUser_id")
+    @Getter @Setter @JsonManagedReference UserAccount threadUser;
 
     @OneToMany(mappedBy = "messageThread")
-    @JsonBackReference(value = "threadMessages")
     @Getter @Setter List<Message> threadMessages;
 
     // time of creation and time of update(messages added)

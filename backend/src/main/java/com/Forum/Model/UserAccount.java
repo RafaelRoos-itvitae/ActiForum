@@ -2,19 +2,13 @@ package com.Forum.Model;
 
 import java.util.List;
 
-import org.springframework.boot.jackson.JsonComponent;
-
 import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import jakarta.persistence.*;
 import lombok.*;
 
 @Data
 @Table
-@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
@@ -36,19 +30,14 @@ public class UserAccount {
     @Getter @Setter private boolean userIsBanned;
 
     @OneToMany(mappedBy = "threadUser")
-    @JsonBackReference(value = "userThreads")
-    @JsonIgnore
-    List<ForumThread> userThreads;
+    @JsonBackReference
+    private List<ForumThread> userThreads;
 
     @OneToMany(mappedBy = "messageUser")
-    @JsonManagedReference(value = "userMessages")
-    @JsonIgnore
-    List<Message> userMessages;
+    private List<Message> userMessages;
 
     @OneToMany(mappedBy = "notificationUser")
-    @JsonManagedReference(value = "userNotifications")
-    @JsonIgnore
-    List<Notification> userNotifications;
+    private List<Notification> userNotifications;
 
     @Column(nullable = false)
     @Getter @Setter private String userBio;

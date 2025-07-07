@@ -3,10 +3,6 @@ package com.Forum.Model;
 import java.sql.Timestamp;
 import java.util.List;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
-
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -25,18 +21,14 @@ public class Message {
     @Getter @Setter private String messageContent;
 
     @ManyToOne
-    @JoinColumn(name = "messageThread")
-    @JsonManagedReference(value = "threadMessages")
+    @JoinColumn(name = "messageThread_id")
     @Getter @Setter ForumThread messageThread;
 
     @ManyToOne
-    @JoinColumn(name = "messageUser")
-    @JsonBackReference(value = "userMessages")
+    @JoinColumn(name = "messageUser_id")
     @Getter @Setter UserAccount messageUser;
 
     @OneToMany(mappedBy = "notificationMessage")
-    @JsonBackReference(value = "messageNotifications")
-    @JsonIgnore
     @Getter @Setter List<Notification> messageNotifications;
 
 
