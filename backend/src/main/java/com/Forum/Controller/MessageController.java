@@ -3,6 +3,8 @@ package com.Forum.Controller;
 import com.Forum.Model.ForumThread;
 import com.Forum.Model.Message;
 import com.Forum.Repository.MessageRepository;
+import com.Forum.Service.MessageService;
+import com.Forum.DTO.Message.Create.*;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -24,6 +26,9 @@ public class MessageController {
     @Autowired
     private MessageRepository messageRepository;
 
+    @Autowired
+    private MessageService messageService;
+
     @GetMapping(value = "/thread/{threadId}/messages")
     public List<Message> getMessages(@PathVariable Long threadId) {
         return messageRepository.findByMessageThreadIdOrderByMessageCreationTimeAsc(threadId);
@@ -35,7 +40,8 @@ public class MessageController {
     }
 
     @PostMapping(value = "/thread/{id}/message/new")
-    public Message createMessage(@RequestBody Message newMessage) {
-        return messageRepository.save(newMessage);
+    //todo: add id in URI as parameter
+    public Message createMessage(@RequestBody CreateRequest newMessage) {
+        return messageRepository.save(messageService.toNewEntity(newMessage));
     }
 }

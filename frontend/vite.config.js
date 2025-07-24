@@ -1,5 +1,5 @@
 import { defineConfig } from "vite";
-import react from "@vitejs/plugin-react";
+import react from '@vitejs/plugin-react-swc';
 
 const host = process.env.TAURI_DEV_HOST;
 
@@ -28,4 +28,13 @@ export default defineConfig(async () => ({
       ignored: ["**/src-tauri/**"],
     },
   },
+  //   resolve: {
+  //   alias: {
+  //     'react': 'preact/compat',
+  //     'react-dom': 'preact/compat',
+  //     'react-dom/test-utils': 'preact/test-utils',
+  //     'react/jsx-runtime': 'preact/jsx-runtime',
+  //     'react/jsx-dev-runtime': 'preact/jsx-dev-runtime'
+  //   }
+  // }
 }));
