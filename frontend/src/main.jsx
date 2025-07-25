@@ -1,5 +1,5 @@
 import './main.css'
-import ReactDOM from 'react-dom/client'
+import ReactDOM from 'react-dom'
 import { StrictMode } from 'react'
 import { BrowserRouter, Route, Routes } from 'react-router'
 import App from './App.jsx'
@@ -11,6 +11,7 @@ import ThreadCreation from './ThreadCreation.jsx'
 import Profile from './Profile.jsx'
 import Home from './Home.jsx'
 import Thread from './Thread.jsx'
+import react from '@vitejs/plugin-react-swc'
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <StrictMode>
